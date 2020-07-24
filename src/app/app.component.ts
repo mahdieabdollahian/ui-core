@@ -6,7 +6,7 @@ declare var require: any;
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
   title = "ui-core";
@@ -16,6 +16,11 @@ export class AppComponent implements OnInit {
     private themeService: ThemeService
   ) {}
   ngOnInit() {
+    if (false) {
+      require("style-loader!../assets/scss/theme3/theme3.scss");
+    } else {
+      require("style-loader!../assets/scss/theme4/theme4.scss");
+    }
     let browserlang = this.translateService.getBrowserLang();
     console.log(browserlang);
     if (this.langs.indexOf(browserlang) > -1) {

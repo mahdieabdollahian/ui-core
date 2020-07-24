@@ -1,0 +1,12 @@
+<div>
+  <h1>
+    {{ "appTitle" | translate }}
+  </h1>
+  <button (click)="useLanguage('en')">English</button>
+  <button (click)="useLanguage('fa')">فارسی</button>
+</div>
+
+<div>
+  <button (click)="toggleLight()">روشنش کن</button>
+  <button (click)="toggleDark()">خاموشش کن</button>
+</div>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: "/mahersan"
+  api_url: "/api/",
 };
 /*
  * For easier debugging in development mode, you can import the following file

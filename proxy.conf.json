@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://mail.customerv3.chsupport.ir/api/js/config.js",
+    "secure": false
+  }
+}

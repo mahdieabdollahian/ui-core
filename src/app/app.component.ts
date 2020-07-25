@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { ThemeService } from "./core/services/theme.service";
+import { ApiService } from "./core/services/api.service";
+
 declare var require: any;
 
 @Component({
@@ -13,7 +15,8 @@ export class AppComponent implements OnInit {
   langs = ["en", "fa"];
   constructor(
     private translateService: TranslateService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private apiService: ApiService
   ) {}
   ngOnInit() {
     if (false) {
@@ -28,6 +31,9 @@ export class AppComponent implements OnInit {
     } else {
       this.translateService.setDefaultLang("fa");
     }
+    this.apiService.get("").subscribe((data) => {
+      console.log(data);
+    });
   }
   an = require("../assets/i18n/fr.json");
 

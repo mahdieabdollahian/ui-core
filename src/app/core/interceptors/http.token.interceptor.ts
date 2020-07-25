@@ -3,7 +3,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest
+  HttpRequest,
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 
@@ -22,7 +22,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     const headersConfig = {
       "Cache-Control": "no-cache, no-store",
       "Content-Type": "application/json",
-      Accept: "application/json"
+      Accept: "application/json",
     };
 
     const csrtToken = this.jwtService.getToken();
@@ -33,9 +33,9 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 
     const request = req.clone({ setHeaders: headersConfig });
     return next.handle(request).pipe(
-      catchError(err => {
+      catchError((err) => {
         if (err.status === 401 || err.status === 403) {
-          window.location.href = "/logout";
+          // window.location.href = "/logout";
         } else if (err.status === 426) {
           this.router.navigateByUrl("/changePass");
         }

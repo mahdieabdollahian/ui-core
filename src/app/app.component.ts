@@ -8,7 +8,7 @@ declare var require: any;
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   title = "ui-core";
@@ -31,15 +31,15 @@ export class AppComponent implements OnInit {
     } else {
       this.translateService.setDefaultLang("fa");
     }
-    this.apiService.get("").subscribe((data) => {
+    this.apiService.get("js/config.js").subscribe(data => {
       console.log(data);
     });
   }
-  an = require("../assets/i18n/fr.json");
+  translateUrl = require("../assets/i18n/fr.json");
 
   public useLanguage(lang: string): void {
     this.translateService.use(lang);
-    this.translateService.setTranslation(lang, this.an, true);
+    this.translateService.setTranslation(lang, this.translateUrl, true);
     // this.translateService.setDefaultLang(this.an);
   }
 

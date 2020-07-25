@@ -1,7 +1,6 @@
 {
   "/api/*": {
     "target": "https://mail.customerv3.chsupport.ir",
-    "secure": false,
-    "changeOrigin": true
+    "secure": false
   }
 }

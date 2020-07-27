@@ -3,17 +3,21 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest,
+  HttpRequest
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
-
 import { JwtService } from "../services";
 import { catchError } from "rxjs/operators";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import { LanguageService } from "./../services";
 
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {
-  constructor(private jwtService: JwtService, private router: Router) {}
+  constructor(
+    private jwtService: JwtService,
+    private router: Router,
+    private languageService: LanguageService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -22,7 +26,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     const headersConfig = {
       "Cache-Control": "no-cache, no-store",
       "Content-Type": "application/json",
-      Accept: "application/json",
+      Accept: "*/*"
     };
 
     const csrtToken = this.jwtService.getToken();
@@ -30,10 +34,11 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     if (csrtToken) {
       headersConfig["x-csrf-token"] = `${csrtToken}`;
     }
+    headersConfig["Accept-Language"] = this.languageService.getLanguage();
 
     const request = req.clone({ setHeaders: headersConfig });
     return next.handle(request).pipe(
-      catchError((err) => {
+      catchError(err => {
         if (err.status === 401 || err.status === 403) {
           // window.location.href = "/logout";
         } else if (err.status === 426) {

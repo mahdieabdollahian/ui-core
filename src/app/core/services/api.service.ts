@@ -18,6 +18,11 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
+  getTextFile(path: string): Observable<any> {
+    return this.http
+      .get(`${environment.api_url}${path}`, { responseType: "text" })
+      .pipe(catchError(this.formatErrors));
+  }
   put(path: string, body: Object = {}): Observable<any> {
     return this.http
       .post(`${environment.api_url}${path}/update`, JSON.stringify(body))

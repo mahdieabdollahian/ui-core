@@ -12,7 +12,7 @@ export class ThemeService {
   }
 
   private setTheme(theme: {}) {
-    Object.keys(theme).forEach(k =>
+    Object.keys(theme).forEach((k) =>
       document.documentElement.style.setProperty(`--${k}`, theme[k])
     );
   }

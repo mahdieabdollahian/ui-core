@@ -1,0 +1,65 @@
+<div class="form-container" *ngIf="formData">
+  <div class="logo"></div>
+  <span class="title">{{ formData?.title }}</span>
+  <form [formGroup]="loginForm" autocomplete="off">
+    <div class="mt-0">
+      <fieldset id="login-body" class="col-sm-12">
+        <div *ngFor="let form_elem of formData.fields">
+          <div [ngSwitch]="form_elem.type">
+            <div *ngSwitchCase="'TEXT'">
+              <input
+                [ngClass]="{ 'invalid-input': submitted }"
+                type="text"
+                formControlName="{{ form_elem.name }}"
+                placeholder="{{ form_elem.placeholder }}"
+                [required]="form_elem.required"
+              />
+              <validator
+                *ngIf="submitted"
+                errormessage="{{ form_elem.errorMessage }}"
+                name="{{ form_elem.name }}"
+                [form]="loginForm"
+              >
+              </validator>
+            </div>
+            <div *ngSwitchCase="'PASSWORD'">
+              <input
+                [ngClass]="{ 'invalid-input': submitted }"
+                type="password"
+                formControlName="{{ form_elem.name }}"
+                placeholder="{{ form_elem.placeholder }}"
+                [required]="form_elem.required"
+              />
+              <validator
+                *ngIf="submitted"
+                errormessage="{{ form_elem.errorMessage }}"
+                name="{{ form_elem.name }}"
+                [form]="loginForm"
+              ></validator>
+            </div>
+          </div>
+        </div>
+        <button
+          class="submit"
+          type="submit"
+          id="loginbtn"
+          (click)="checkValidity(loginForm)"
+        >
+          ورود
+        </button>
+
+        <div class="options">
+          <div>
+            <span>{{ "forgot password" | translate }}</span>
+            <span>
+              |
+            </span>
+            <span>{{ "sign up" | translate }}</span>
+          </div>
+          <span>{{ "Mfa update" | translate }}</span>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+  <div class="language" (click)="changeLanguage('en')">EN</div>
+</div>

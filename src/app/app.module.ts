@@ -8,9 +8,10 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 
-export function TranslationLoaderFactory(http: HttpClient) {
+export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,12 +23,12 @@ export function TranslationLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: TranslationLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

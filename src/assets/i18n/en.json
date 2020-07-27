@@ -1,4 +1,5 @@
 {
-  "appTitle": "Angular 9 Example",
-  "appText": "Welcome to our app!"
+  "forgot password": "Forgot password",
+  "sign up": "Sign Up",
+  "Mfa update": "Mfa update"
 }

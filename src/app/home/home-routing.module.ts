@@ -3,21 +3,10 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home.component";
 import { GenerateTemplateComponent } from "./pages/generate-template/generate-template.component";
 
-const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent,
-    children: [
-      {
-        path: "form",
-        component: GenerateTemplateComponent
-      }
-    ]
-  }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HomeRoutingModule {}

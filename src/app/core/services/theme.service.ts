@@ -1,25 +1,14 @@
 import { Injectable } from "@angular/core";
 
-export const darkTheme = {
-  "primary-color": "#455363",
-  "background-color": "#1f2935",
-  "text-color": "#fff"
-};
-
-export const lightTheme = {
-  "primary-color": "#fff",
-  "background-color": "#e5e5e5",
-  "text-color": "#2d2d2d"
-};
-
 @Injectable({ providedIn: "root" })
 export class ThemeService {
-  toggleDark() {
-    this.setTheme(darkTheme);
+  setColors(colors) {
+    this.setTheme(colors);
   }
 
-  toggleLight() {
-    this.setTheme(lightTheme);
+  setDirection(language) {
+    let direction = language == "fa" ? "rtl" : "ltr";
+    document.documentElement.style.setProperty("--direction", direction);
   }
 
   private setTheme(theme: {}) {

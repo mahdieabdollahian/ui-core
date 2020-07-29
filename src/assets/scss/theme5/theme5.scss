@@ -69,6 +69,10 @@ input::placeholder {
   font-size: 0.8rem;
   color: #757575;
   margin-top: 30px;
+  span:hover {
+    color: var(--primaryColor);
+    cursor: pointer;
+  }
   & > span {
     margin-top: 4px;
     display: inline-block;
@@ -78,10 +82,6 @@ input::placeholder {
     justify-content: space-evenly;
     & > span {
       line-height: 40px;
-      cursor: pointer;
-      &:hover {
-        color: var(--primaryColor);
-      }
     }
   }
 }

@@ -7,45 +7,16 @@
         <div *ngFor="let form_elem of formData.fields">
           <div [ngSwitch]="form_elem.type">
             <div *ngSwitchCase="'TEXT'">
-              <input
-                [ngClass]="{ 'invalid-input': submitted }"
-                type="text"
-                formControlName="{{ form_elem.name }}"
-                placeholder="{{ form_elem.placeholder }}"
-                [required]="form_elem.required"
-              />
-              <validator
-                *ngIf="submitted"
-                errormessage="{{ form_elem.errorMessage }}"
-                name="{{ form_elem.name }}"
-                [form]="loginForm"
-              >
-              </validator>
+              <app-input [type]="'text'" [formData]="form_elem" [form]="loginForm" [submitted]="submitted"></app-input>
             </div>
             <div *ngSwitchCase="'PASSWORD'">
-              <input
-                [ngClass]="{ 'invalid-input': submitted }"
-                type="password"
-                formControlName="{{ form_elem.name }}"
-                placeholder="{{ form_elem.placeholder }}"
-                [required]="form_elem.required"
-              />
-              <validator
-                *ngIf="submitted"
-                errormessage="{{ form_elem.errorMessage }}"
-                name="{{ form_elem.name }}"
-                [form]="loginForm"
-              ></validator>
+              <app-input [type]="'password'" [formData]="form_elem" [form]="loginForm" [submitted]="submitted">
+              </app-input>
             </div>
           </div>
         </div>
-        <button
-          class="submit"
-          type="submit"
-          id="loginbtn"
-          (click)="checkValidity(loginForm)"
-        >
-          ورود
+        <button class="submit" type="submit" id="loginbtn" (click)="checkValidity(loginForm)">
+          {{ "login" | translate }}
         </button>
 
         <div class="options">
@@ -61,5 +32,10 @@
       </fieldset>
     </div>
   </form>
-  <div class="language" (click)="changeLanguage('en')">EN</div>
+  <div *ngIf="selectlanguage == 'fa'; else farsiBlock" class="language" (click)="changeLanguage('en')">
+    EN
+  </div>
+  <ng-template #farsiBlock>
+    <div class="language" (click)="changeLanguage('fa')">FA</div>
+  </ng-template>
 </div>

@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.languageService.initLanguage();
     this.setConfig();
+    require(`style-loader!../assets/scss/theme5/theme5.scss`);
   }
   translateUrl = require("../assets/i18n/fr.json");
   setConfig() {

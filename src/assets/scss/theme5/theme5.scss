@@ -14,9 +14,6 @@ button {
   height: 100vh;
   padding: 0 11%;
 }
-// generate-template {
-//   margin-right: 11%;
-// }
 .form-container {
   width: 360px;
   min-height: 470px;
@@ -102,33 +99,33 @@ input::placeholder {
   }
 }
 
-.input-container{
+.input-container {
   position: relative;
 }
 
-.tooltip{
-  background-color: white;
-  color: #757575;
+.tooltip {
+  background-color: var(--primaryColor);
+  color: white;
   box-shadow: 0px 2px 5px 0px rgb(100 99 99 / 38%);
   border-radius: 4px;
   position: absolute;
-  height: 46px;
+  height: 40px;
   width: auto;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   display: flex;
   align-items: center;
   top: 0;
   right: 103%;
-  min-width: 164px;
-  padding: 10px;
+  min-width: 140px;
+  padding: 8px 2%;
   box-sizing: border-box;
   flex-wrap: wrap;
-  &>span{
+  & > span {
     display: inline-block;
     width: 10px;
     height: 10px;
     position: absolute;
-    background-color: white;
+    background-color: var(--primaryColor);
     transform: rotate(45deg);
     top: 15px;
     left: 97%;
@@ -150,7 +147,7 @@ input::placeholder {
     width: 100%;
     margin: auto;
   }
-  .tooltip{
+  .tooltip {
     background-color: #757575;
     color: white;
     height: 46px;
@@ -159,7 +156,7 @@ input::placeholder {
     right: 0;
     width: 100%;
     z-index: 1;
-    &>span{
+    & > span {
       background-color: #757575;
       top: -4px;
       left: 50%;

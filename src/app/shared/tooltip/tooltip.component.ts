@@ -1,16 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'tooltip',
-  template: `<span *ngIf="show" class="tooltip">{{text}} <span></span></span>`,
-  styleUrls: ['./tooltip.component.scss']
+  selector: "tooltip",
+  template: `<span *ngIf="show" class="tooltip"
+    >{{ text }} <span></span
+  ></span>`,
+  styleUrls: [],
 })
 export class TooltipComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
   @Input() show;
   @Input() text;
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
